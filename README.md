@@ -62,27 +62,57 @@ NBomber itself is free for personal use; organizations need an [NBomber license]
 
 ## Installation
 
-Skills live in a `skills` folder that Claude Code reads on startup. Clone this repo and copy the skill folder there.
+Skills live in a `skills` folder that Claude Code reads on startup. Clone this repo, copy the skill folder there, then delete the clone. Pick one of the two options below.
 
-**For all your projects** (personal skills folder):
+### Option 1: for all your projects
+
+The skill goes into your personal skills folder (`~/.claude/skills/`). Run these from any folder.
+
+macOS / Linux (bash):
 
 ```bash
 git clone https://github.com/OlenaKostash/nbomber-skills.git
 mkdir -p ~/.claude/skills
 cp -r nbomber-skills/nb-load-test-creator ~/.claude/skills/
+rm -rf nbomber-skills
 ```
 
-On Windows (PowerShell):
+Windows (PowerShell):
 
 ```powershell
 git clone https://github.com/OlenaKostash/nbomber-skills.git
 New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
 Copy-Item -Recurse nbomber-skills\nb-load-test-creator "$HOME\.claude\skills\"
+Remove-Item -Recurse -Force nbomber-skills
 ```
 
-**For one project only**, copy the folder into that project's `.claude/skills/` folder instead. Commit it there, and everyone who opens the project in Claude Code gets the skill.
+### Option 2: for one project only
 
-Restart Claude Code, or start a new session, so it picks up the skill.
+The skill goes into the project's `.claude/skills/` folder. Run these **from the project's root folder** (the folder you open Claude Code in). Commit `.claude/skills/nb-load-test-creator`, and everyone who opens the project in Claude Code gets the skill.
+
+macOS / Linux (bash):
+
+```bash
+git clone https://github.com/OlenaKostash/nbomber-skills.git
+mkdir -p .claude/skills
+cp -r nbomber-skills/nb-load-test-creator .claude/skills/
+rm -rf nbomber-skills
+```
+
+Windows (PowerShell):
+
+```powershell
+git clone https://github.com/OlenaKostash/nbomber-skills.git
+New-Item -ItemType Directory -Force ".claude\skills" | Out-Null
+Copy-Item -Recurse nbomber-skills\nb-load-test-creator ".claude\skills\"
+Remove-Item -Recurse -Force nbomber-skills
+```
+
+The last command deletes the cloned `nbomber-skills` folder. You only need the copy in `.claude/skills/`, and leaving the clone inside your project would add a second git repository to it.
+
+### Check the install
+
+Start a new Claude Code session (or restart Claude Code) so it picks up the skill, then type `/`. You should see `nb-load-test-creator` in the list.
 
 ## Usage
 
