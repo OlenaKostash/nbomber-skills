@@ -1,0 +1,11 @@
+# IDE files
+.vs/
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# skill-creator eval workspaces (test runs, not part of the skill)
+*-workspace/
